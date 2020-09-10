@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>练习三个不同按钮控制三个不同的区域</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<style>
+		#span1{
+			width:200px;
+			height:200px;
+			background: saddlebrown;
+		}
+		#span2{
+			width:200px;
+			height:200px;
+			background: #87CEEB;
+		}
+		#span3{
+			width: 200px;
+			height: 200px;
+			background: silver;
+		}
+		</style>
+	<body>
+		<div id="app">
+			{{message}}
+			<div v-show="vflag1" id="span1">
+				1
+			</div>
+			<div v-show="vflag2" id="span2">
+				2
+				</div>
+				<div v-show="vflag3" id="span3">
+					3
+				</div>
+				<button @click="function1">1</button>
+				<button @click="function2">2</button>
+				<button @click="function3">3</button>
+			</div>
+			
+			<script type="text/javascript">
+				console.log(Vue)
+				let app=new Vue(
+				{
+					el:"#app",
+					data:{
+						message:"测试",
+						vflag1:false,
+						vflag2:false,
+						vflag3:false,
+					},
+					methods:{
+						function1:function(e)
+						{
+							app.vflag1=!app.vflag1;
+						},
+						function2:function(e)
+						{
+							app.vflag2=!app.vflag2;
+						},
+						function3:function(e)
+						{
+							app.vflag3=!app.vflag3;
+						}
+					}
+				}
+				)
+			</script>
+	</body>
+</html>

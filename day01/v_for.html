@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>列表渲染</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h3>列表渲染</h3>
+			<ul>
+				<li v-for="item in stars">
+					{{item}}
+				</li>
+				</ul>
+				<h3>学生列表</h3>
+				<ul>
+					<li v-for="item in students">
+						<p>姓名：{{item.studentname}}</p>
+						年龄：{{item.age}}---
+						学校：{{item.school}}
+					</li>
+				</ul>
+				<h3>循环对象</h3>
+				<ul>
+					<li v-for="item,key in students[0]">
+						{{key}}
+						{{item}}
+						</li>
+					</ul>
+					<img :src="students[0].imageheader">
+					<h3>条件循环渲染</h3>
+					<ol>
+						<li v-for="item in students" v-if="item.age%2==0" :key="itemindex">
+							<!-- 唯一标识 防止 -->
+							{{item.age}}--{{item.studentname}}
+							</li>
+						</ol>
+		</div>
+		<script>
+			var app=new Vue(
+			{
+				el:"#app",
+				data:{
+					stars:["赵飞燕","钟馗","武松"],
+				
+				students:[
+					{
+						studentname:"小乔",
+						age:18,
+						school:"家里蹲",
+						imageheader:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599757609037&di=0fe9820d0e90a2e32b948785d3867ca4&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F77094b36acaf2edd4b59f5178b1001e9380193a0.jpg",
+					},
+					{
+						studentname:"周瑜",
+						age:17,
+						school:"家里蹲",
+					},
+					{
+						studentname:"刘备",
+						age:18,
+						school:"家里蹲",
+					}
+					
+				],
+				},
+			}
+			)
+		</script>
+	</body>
+</html>

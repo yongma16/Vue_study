@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>测试</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>用户名：{{username}}</h1>
+			{{title}}
+			<h3 v-if="isVip">用户类型：vip</h3>
+			<h3 v-else="isVip">普通用户</h3>
+			<hr>
+			<h1>用户登录时间</h1>
+			<h3 v-if="age>18">24小时</h3>
+			<h3 v-else-if="age>14">6小时</h3>
+			<h3 v-else>不能登录</h3>
+		</div>
+		<script>
+			console.log(Vue)
+			//数据的双向绑定
+			let app=new Vue(
+			{
+				el:"#app",
+				data:{
+					title:"123",
+					username:"hhhh",
+					isVip:false,
+					age:20,
+				}
+			})
+		</script>
+	</body>
+</html>

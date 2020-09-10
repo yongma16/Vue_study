@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<style type="text/css">
+		#spane{
+			width:200px;
+			height:200px;
+			background: skyblue;
+		}
+		</style>
+	<body>
+		<div id="app">
+			<div v-show="isShow" id="spane">
+				hello Vue
+			</div>
+			<button @click="showpane">切换显示内容</button>
+			<!-- 前缀 -->
+		</div>
+			
+			<script>
+				let app=new Vue(
+				{
+					el:"#app",
+					data:
+					{
+						isShow:true,
+					},
+					methods:{
+						showpane:function()
+						{
+							// var falg=app.isShow;
+							// app.isShow=!falg;
+							app.isShow=!app.isShow;
+						}
+					}
+				}
+				)
+				</script>
+	</body>
+</html>
