@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{msg}}
+			<h1 v-html="htmltext">
+				</h1>
+		</div>
+		
+		<script>
+			let app=new Vue(
+			{
+				el:"#app",
+				data:
+				{
+					msg:"test",
+					htmltext:"<script></script>",
+				}
+			})
+		</script>
+	</body>
+</html>

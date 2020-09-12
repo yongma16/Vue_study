@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>侦听事件</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{msg}}<br>
+			{{reversmsg}}<br>
+			<ul>
+				<li v-for="i in arr">{{i}}</li>
+				</ul>
+			</div>
+			<script>
+				let app=new Vue(
+				{
+					el:"#app",
+					data:{
+						msg:"侦听事件学习",
+						arr:
+						[
+							"赵飞燕","王昭君","张飞","关羽"
+						]
+					},
+					computed:{
+						reversmsg:{
+							get:function(){
+								return this.msg.split("").reverse().join("")
+							},
+							set:function(value)
+							{
+								this.msg=value.split("").reverse().join("")
+								// return this.msg
+							}
+							}
+					},
+					// 侦听事件
+					watch:{
+						msg:function(value){
+							console.log("侦听msg")
+							console.log(value)
+						},
+						arr:function(value){
+							console.log(value)
+						}
+					}
+				}
+				)
+			</script>
+	</body>
+</html>

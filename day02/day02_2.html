@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>绑定id</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<style>
+		#login{
+			/* width: 200px;
+			height: 200px; */
+			background: #ff00ff;
+		}
+		#register
+		{
+			background: #87CEEB;
+		}
+	</style>
+	<body>
+		<div id="app">
+			{{msg}}<br>
+			<!-- v-bind:id -->
+			<div v-bind:id="idname">
+				<h1>登录</h1>
+			</div>
+			<div v-bind:id="registerid">
+				<h1>注册</h1>
+				
+				</div>
+				<!-- 表达式 -->
+				{{firstname+lastname}}
+				<!-- 三元运算符 -->
+				<div>
+					{{isvip? msg1:msg2}}
+					</div>
+					<!-- 事件的绑定 -->
+					<button v-on:click="button_1">改变背景</button>
+					<button @click="button_1">改变背景</button>
+			</div>
+				<script type="text/javascript">
+					let app=new Vue(
+					{
+						el:"#app",
+						
+						data:{
+							msg:"vue测试",
+							idname:"login",
+							registerid:"register",
+							firstname:"hhh",
+							lastname:",",
+							msg1:"欢迎王者大神",
+							msg2:"欢迎菜鸟",
+							isvip:false,
+						},
+						methods:{
+							button_1:function(){
+								document.body.style.background="#FF00FF"
+							}
+						}
+					})
+				</script>
+	</body>
+</html>

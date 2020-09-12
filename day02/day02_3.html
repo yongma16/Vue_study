@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算属性</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 计算属性computed -->
+		<div id="app">
+			<div>
+				{{a+b}}<br>
+				{{c}}<br>
+				{{word.split("").reverse().join("")}}<br>
+				{{reverseword}}<br>
+				<!-- 分开为s数组对象相加 -->
+				
+			</div>
+			
+			<ul>
+			<li v-for="item,i in arry_student">
+				{{item}}<br>
+				{{i}}<br>
+				姓名：{{item.studentname}}<br>
+				年龄：{{item.age}}<br>
+			</li>
+			</ul>
+			
+		</div>
+			
+			<script>
+				let app=new Vue(
+				{
+					el:"#app",
+					data:{
+						a:"哈哈哈",
+						b:"嘻嘻嘻",
+						word:"hello",
+						students:[
+							{
+								studentname:"小乔",
+								age:18,
+								school:"家里蹲",
+								imageheader:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599757609037&di=0fe9820d0e90a2e32b948785d3867ca4&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F77094b36acaf2edd4b59f5178b1001e9380193a0.jpg",
+							},
+							{
+								studentname:"周瑜",
+								age:17,
+								school:"家里蹲",
+							},
+							{
+								studentname:"刘备",
+								age:18,
+								school:"家里蹲",
+							}
+						]
+					},
+					computed:
+					{
+						c:function()
+						{
+							return this.a+this.b
+						},
+						reverseword:function()
+						{
+						return this.word.split("").reverse().join("")
+						},
+						arry_student:function()
+						{
+							let result=this.students.filter((item,i)=>{
+								return item.age%2==0
+							})
+							return result;
+						}
+					}
+				})
+			</script>
+	</body>
+</html>
