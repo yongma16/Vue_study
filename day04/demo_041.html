@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件处理</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>事件处理</h2>
+			<button type="button" @click="count++">+</button>
+			<button type="button" @click="count--">-</button>
+			<button type="button" @click="event">打印</button>
+			<br>
+			<h3>{{count}}</h3>
+			<p v-if="isFlag">{{count}}</p>
+		</div>
+		<script>
+			new Vue(
+			{
+				el:"#app",
+				data:{
+					msg:"",
+					count:0,
+					isFlag:false
+				},
+				methods:{
+					event:function(event){
+						this.isFlag=!this.isFlag
+						this.msg=event
+						console.log(event)
+						console.log(this)
+					}
+				}
+			}
+			)
+		</script>
+	</body>
+</html>

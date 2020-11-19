@@ -7,6 +7,8 @@
 	</head>
 	<style type="text/css">
 		#spane{
+			left:0;
+			top:60;
 			width:200px;
 			height:200px;
 			background: skyblue;
@@ -14,10 +16,11 @@
 		</style>
 	<body>
 		<div id="app">
+			<button @click="showpane">是否显示css样式</button>
 			<div v-show="isShow" id="spane">
-				hello Vue
+				it is span
 			</div>
-			<button @click="showpane">切换显示内容</button>
+			
 			<!-- 前缀 -->
 		</div>
 			

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>侧边栏</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+				box-sizing:border-box;
+			}
+			.page{
+				width: 50vw;
+				height:100vh;
+				background-color: #62ebd5;
+				position: fixed;
+				left:0;
+				top:0;
+			}
+			.test{
+				width:50vw;
+				height:100vh;
+				position: fixed;
+				left:0;
+				right:0;
+				top:0;
+				transform:translateX(100vw);
+				/* 位置100不显示 */
+				background-color: #eb6f02;
+				transition: transform 0.6s;
+			}
+			.activetest{
+				transform:translateX(50vw);
+				/* 位置50的时候显示在右边，100到50,从右边到左边 */
+			}
+			/* 从左往右，再从右往左逆向 */
+		</style>
+	<!-- vue组件本质上拥有预定义选项的一个vue实例 -->
+	<body>
+		<div id="app">
+			
+			<div class="page">
+				<h4>主菜单 </h4>
+				<button @click="toggleMenu" type="button">切换侧边栏</button>
+			</div>
+			
+			<div class="test" v-bind:class="{activetest:isFlag}">
+				侧边栏
+			</div>
+			<br>
+			12313
+		</div>
+		<script>
+			let app=new Vue(
+			{
+				el:"#app",
+				data:{
+					isFlag:false
+				},
+				methods:{
+					toggleMenu:function(){
+						this.isFlag=!this.isFlag
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

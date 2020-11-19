@@ -9,6 +9,7 @@
 		.page{
 			width:200px;
 			height:200px;
+			transform: translateX(50vw);
 			background: #87CEEB;
 			display: block;
 		.pageone{
@@ -25,7 +26,7 @@
 				
 			</div>绑定属性 通过对象的方式推断是否存在几个类-->
 			<div class="pageone" v-bind:class="{page:isActive}">
-				测试class
+				绑定css
 			</div>
 			<br>
 			<button @click="b_act">

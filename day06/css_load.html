@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>侧边栏</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+		<style>
+/* 			*{
+				margin: 0px;
+				padding: 0px;
+				box-sizing:border-box;
+			} */
+			.page{
+				/* display: block; */
+				width: 100vw;
+				height:100px;
+				background-color: #62ebd5;
+				position: fixed;
+				left:0;
+				top:0;
+			}
+			.leftpage{
+				width:200px;
+				height:100vh;
+				position: fixed;
+				left:0;
+				top:100px;
+				transform:translateX(0vw);
+				/* 位置100不显示 */
+				background-color: #078bff;
+				transition: transform 1s;
+			}
+			.activeleft{
+				transform:translateX(-50vw);
+				/* 位置50的时候显示在右边，100到50,从右边到左边 */
+			}
+			.rightpage{
+				width:100vw;
+				height:100vh;
+				position: fixed;
+				right:0;
+				top:100px;
+				transform:translateX(200px);
+				/* 位置100不显示 */
+				background-color: #ff985c;
+				transition: transform 0.6s;
+			}
+			.activeright{
+				transform:translateX(0vw);
+				}
+			/* 从左往右，再从右往左逆向 */
+		</style>
+	<body>
+		<div id="app">
+			
+			<div class="page">
+				主菜单
+				<button @click="toggleMenu" type="button">切换侧边栏</button>
+			</div>
+			
+			<div class="leftpage" v-bind:class="{activeleft:isFlag}">
+				侧边栏
+			</div>
+			<div class="rightpage" v-bind:class="{activeright:isFlag}">
+				<h1>主界面</h3>
+				
+				<input v-model="message" placeholder="双向绑定输入测试" ><br>
+				输入框的内容: {{ message }}  <br><button @click="change">添加</button>
+				
+				<ul>
+					<li v-for="item,index in array">索引值：{{index}} 内容：{{item}} 
+					</li>
+				</ul>
+
+					<form action="" method="post">
+						<input type="text" name="username" v-model="username" placeholder="username" value=""/><br><br>
+						<input type="password" name="password" v-model="password" placeholder="password" value=""/><br><br>
+						<input type="submit" @click.prevent="submitMethod" value="提交">
+						
+						<!-- 阻止表单提交 click.prevent-->
+					</form>
+					提交的数据<br>
+				    username：{{username}}<br>
+					password：{{password}}
+					
+				<ul>
+					<li v-for="item in stars">
+						{{item}}
+					</li>
+					</ul>
+					<h3>学生列表</h3>
+					<ul>
+						<li v-for="item in students">
+							<p>姓名：{{item.studentname}}</p>
+							年龄：{{item.age}}---
+							学校：{{item.school}}
+						</li>
+					</ul>
+					<h3>循环对象</h3>
+					<ul>
+						<li v-for="item,key in students[0]">
+							{{key}}
+							{{item}}
+							</li>
+						</ul>
+						<img :src="students[0].imageheader">
+						<h3>条件循环渲染</h3>
+						<ol>
+							<li v-for="item in students" v-if="item.age%2==0" :key="itemindex">
+								<!-- 唯一标识 防止 -->
+								{{item.age}}--{{item.studentname}}
+								</li>
+							</ol>
+			</div>
+			<br>
+			12313
+		</div>
+		<script>
+			let app=new Vue(
+			{
+				el:"#app",
+				data:{
+					username:"",
+					password:"",
+					message:"",
+					array:[],
+					stars:["赵飞燕","商鞅","武松"],
+					students:[
+						{
+							studentname:"小乔",
+							age:18,
+							school:"三国学院"
+							// imageheader:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599757609037&di=0fe9820d0e90a2e32b948785d3867ca4&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F77094b36acaf2edd4b59f5178b1001e9380193a0.jpg",
+						},
+						{
+							studentname:"周瑜",
+							age:17,
+							school:"三国学院",
+						},
+						{
+							studentname:"刘备",
+							age:18,
+							school:"三国学院",
+						}
+						
+					],
+					isFlag:false
+				},
+				methods:{
+					toggleMenu:function(){
+						this.isFlag=!this.isFlag
+					},
+					toggleMenu:function(){
+						this.isFlag=!this.isFlag
+						console.log(this.$root.isFlag)
+					},
+					change:function(){
+						this.array.push(this.message)
+					},
+					submitMethod:function(){
+						this.message+="提交+1"
+						this.message=username
+						}
+				}
+			})
+		</script>
+	</body>
+</html>
