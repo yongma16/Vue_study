@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件传参</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<style>
+		body{
+			background-color: #53d7e5;
+		}
+	</style>
+	<body>
+		<div id="app">
+			
+			<input v-model="message" placeholder="双向绑定输入测试" >
+			<p>输入框的内容: {{ message }} </p> <button @click="change">添加</button>
+
+			<ul>
+				<li v-for="item,index in array">索引值：{{index}} 内容：{{item}} 
+				</li>
+			</ul>
+			
+				<br><br><br>
+				<form action="" method="post">
+					<input type="text" name="username" v-model="username" placeholder="username" value=""/><br><br>
+					<input type="password" name="password" v-model="password" placeholder="password" value=""/><br><br>
+					<input type="submit" @click.prevent="submitMethod" value="提交">
+					
+					<!-- 阻止表单提交 click.prevent-->
+				</form>
+				提交的数据<br>
+			    username：{{username}}<br>
+				password：{{password}}
+		</div>
+		
+		
+		<script>
+			let app=new Vue(
+			{
+				el:"#app",
+				data:{
+					username:"",
+					password:"",
+					message:"",
+					array:[],
+					isFlag:false
+				},
+				methods:{
+					toggleMenu:function(){
+						this.isFlag=!this.isFlag
+						console.log(this.$root.isFlag)
+					},
+					change:function(){
+						this.array.push(this.message)
+					},
+					submitMethod:function(){
+						this.message+="提交+1"
+						this.message=username
+						}
+				}
+			})
+		</script>
+	</body>
+</html>
