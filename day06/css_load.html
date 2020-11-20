@@ -44,7 +44,7 @@
 				transform:translateX(200px);
 				/* 位置100不显示 */
 				background-color: #ff985c;
-				transition: transform 0.6s;
+				transition: transform 2s;
 			}
 			.activeright{
 				transform:translateX(0vw);
@@ -56,7 +56,7 @@
 			
 			<div class="page">
 				主菜单
-				<button @click="toggleMenu" type="button">切换侧边栏</button>
+				<button @click="toggleMenu" type="button">切换</button>
 			</div>
 			
 			<div class="leftpage" v-bind:class="{activeleft:isFlag}">
@@ -67,7 +67,7 @@
 				
 				<input v-model="message" placeholder="双向绑定输入测试" ><br>
 				输入框的内容: {{ message }}  <br><button @click="change">添加</button>
-				
+				<p>数组：</p>
 				<ul>
 					<li v-for="item,index in array">索引值：{{index}} 内容：{{item}} 
 					</li>
@@ -91,8 +91,9 @@
 					</ul>
 					<h3>学生列表</h3>
 					<ul>
+						<img :src="students[0].imageheader" width="40px">
 						<li v-for="item in students">
-							<p>姓名：{{item.studentname}}</p>
+							姓名：{{item.studentname}}---
 							年龄：{{item.age}}---
 							学校：{{item.school}}
 						</li>
@@ -104,7 +105,7 @@
 							{{item}}
 							</li>
 						</ul>
-						<img :src="students[0].imageheader">
+						
 						<h3>条件循环渲染</h3>
 						<ol>
 							<li v-for="item in students" v-if="item.age%2==0" :key="itemindex">
@@ -117,6 +118,7 @@
 			12313
 		</div>
 		<script>
+			
 			let app=new Vue(
 			{
 				el:"#app",
@@ -130,8 +132,8 @@
 						{
 							studentname:"小乔",
 							age:18,
-							school:"三国学院"
-							// imageheader:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599757609037&di=0fe9820d0e90a2e32b948785d3867ca4&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F77094b36acaf2edd4b59f5178b1001e9380193a0.jpg",
+							school:"三国学院",
+							imageheader:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599757609037&di=0fe9820d0e90a2e32b948785d3867ca4&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F77094b36acaf2edd4b59f5178b1001e9380193a0.jpg",
 						},
 						{
 							studentname:"周瑜",
@@ -153,7 +155,6 @@
 					},
 					toggleMenu:function(){
 						this.isFlag=!this.isFlag
-						console.log(this.$root.isFlag)
 					},
 					change:function(){
 						this.array.push(this.message)

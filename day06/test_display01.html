@@ -68,8 +68,8 @@
 				
 				<button @click="css_control" type="button" v-show="!isFlag">隐藏</button>
 				<button @click="css_control" type="button" v-show="isFlag">显示</button>
-				<form action="" method="post">
-					<input v-show="isFlag" type="text" name="username" v-model="username" placeholder="username" value=""/>
+				<form v-show="isFlag" action="" method="post">
+					<input type="text" name="username" v-model="username" placeholder="username" value=""/>
 					<input type="submit" @click.prevent="submitMethod" value="提交">
 					
 					<!-- 阻止表单提交 click.prevent-->
